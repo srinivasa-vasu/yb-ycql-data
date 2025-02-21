@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: ycql
+  ssl:
+    bundle:
+      pem:
+        ycql:
+          truststore:
+            certificate: "classpath:client.crt"
+  cassandra:
+    contact-points: 127.0.0.2:9042,127.0.0.2:9042,127.0.0.2:9042
+    local-datacenter: ap-south-1
+    keyspace-name: kv
+    username: cassandra
+    password: cassandra
+    ssl:
+      enabled: on
+      bundle: ycql
