@@ -8,11 +8,26 @@ spring:
 #          truststore:
 #            certificate: "classpath:client.crt"
   cassandra:
-    contact-points: 127.0.0.2:9042,127.0.0.3:9042,127.0.0.4:9042
+    contact-points: 127.0.0.1:9042,127.0.0.2:9042,127.0.0.3:9042
     local-datacenter: ap-south-1
     keyspace-name: kv
     username: cassandra
     password: cassandra
+    config: "classpath:application-ycql.conf"
 #    ssl:
 #      enabled: on
 #      bundle: ycql
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus, metrics
+  jmx:
+    metrics:
+      export:
+        enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
